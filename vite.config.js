@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react-swc'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/pizzaStore/',
   css: {
     modules: {
       // Это добавит имя файла и локальное имя в итоговый класс
