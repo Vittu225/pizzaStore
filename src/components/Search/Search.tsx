@@ -1,4 +1,4 @@
-import React, { use, useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import styles from './Search.module.scss'
 import clear from './clear.svg'
 import { useAppDispatch, useAppSelector } from '../../store/hooks'
@@ -20,38 +20,45 @@ function debounce<T extends (...args: never[]) => void>(fn: T, delay: number) {
 
 const Search = () => {
   const dispatch = useAppDispatch()
-  const [inputValue, setInputValue] = useState<string>('')
   const searchValue = useAppSelector((state) => state.filter.searchValue)
+  const [inputValue, setInputValue] = useState<string>(searchValue)
 
 
   const updateSearchValue = useCallback(
     debounce((str: string) => {
-      dispatch(setSearchValue(str));
+      dispatch(setSearchValue(str))
     }, 500),
-    [] 
-  );
+    [dispatch],
+  )
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value); 
-    updateSearchValue(e.target.value); // 
-  };
+    setInputValue(e.target.value)
+    updateSearchValue(e.target.value)
+  }
+
+  const onClear = () => {
+    setInputValue('')
+    dispatch(setSearchValue(''))
+  }
 
   return (
     <div className={styles.root}>
       <input
-        onChange={onChangeInput}
         type="text"
         placeholder="Поиск пиццы..."
+        onChange={onChangeInput}
         value={inputValue}
       />
 
       {searchValue && (
-        <img
-          onClick={() => dispatch(setSearchValue(''), setInputValue(''))}
-          src={clear}
-          className={styles.clearIcon}
-          alt="Clear"
-        />
+        <button
+          type="button"
+          onClick={onClear}
+          className={styles.clearButton}
+          aria-label="Очистить поиск"
+        >
+          <img src={clear} className={styles.clearIcon} alt="" />
+        </button>
       )}
     </div>
   )

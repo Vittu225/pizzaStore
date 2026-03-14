@@ -26,7 +26,6 @@ const cartSlice = createSlice({
       if (existingItem) {
         existingItem.count += 1;
       } else {
-        const typeNames = ['тонкое', 'традиционное'];
         state.items.push({
           id: itemId,
           pizzaId: pizza.id,
