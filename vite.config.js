@@ -5,6 +5,11 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   plugins: [react()],
   base: '/pizzaStore/',
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.ts', // файл для расширения матчеров (например, toBeInTheDocument)
+  },
   css: {
     modules: {
       // Это добавит имя файла и локальное имя в итоговый класс
