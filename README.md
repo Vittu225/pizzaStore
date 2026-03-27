@@ -7,6 +7,7 @@
 * **Backend-as-a-Service:** Supabase (хранение данных и получение API)
 * **Build Tool:** Vite
 * **Styling:** SCSS / CSS Modules
+* **Testing: Vitest (Unit-тестирование логики Redux и асинхронных запросов)
 
 ## 🛠 Функционал
 - Просмотр каталога пицц с фильтрацией по категориям.
