@@ -1,33 +1,47 @@
 .root {
     position: relative;
-
-   
+    width: 100%;
+    max-width: 400px;
 }
 
 input {
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 8px 20px;
     padding-left: 42px;
-    width: 400px;
+    width: 100%;
     border-radius: 12px;
     font-size: 16px;
 
     &:focus {
         border: 1px solid rgba(0, 0, 0, 0.3);
     }
+
+    @media (max-width: 576px) {
+        font-size: 15px;
+        padding-left: 38px;
+        padding-right: 40px;
+    }
+}
+
+.clearButton {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .clearIcon {
     width: 16px;
     height: 16px;
     opacity: 0.3;
-    position: absolute;
-    right: 15px;
-    top: 12px;
-
-
     &:hover {
         opacity: 0.8;
-        cursor: pointer;
     }
 }

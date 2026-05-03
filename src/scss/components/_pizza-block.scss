@@ -1,17 +1,21 @@
 @import '../variables';
 
 .pizza-block {
-  width: 280px;
+  width: min(100%, 280px);
   text-align: center;
   margin-bottom: 65px;
 
   &-wrapper {
     display: flex;
     justify-content: center;
+
+    @media (max-width: 730px) {
+      width: 100%;
+    }
   }
 
   &__image {
-    width: 260px;
+    width: min(100%, 260px);
   }
 
   &__title {
@@ -43,6 +47,12 @@
         font-weight: 600;
         font-size: 14px;
         @include noselect();
+
+        @media (max-width: 420px) {
+          font-size: 13px;
+          padding: 8px 4px;
+        }
+
         &.active {
           background: #ffffff;
           box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
